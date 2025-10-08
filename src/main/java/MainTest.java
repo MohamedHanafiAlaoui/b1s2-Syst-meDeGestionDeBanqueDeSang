@@ -7,17 +7,14 @@ import jakarta.persistence.EntityManagerFactory;
 public class MainTest {
     public static void main(String[] args) {
 
-        // الحصول على EntityManagerFactory من JPAUtil
         EntityManagerFactory emf = JPAUtil.getEntityManagerFactory();
         EntityManager em = null;
 
         try {
             em = emf.createEntityManager();
 
-            // بداية الترانزاكشن
             em.getTransaction().begin();
 
-            // اختبار بسيط: تنفيذ استعلام native
             Object result = em.createNativeQuery("SELECT 1").getSingleResult();
             System.out.println("✅ Connection test successful: " + result);
 
