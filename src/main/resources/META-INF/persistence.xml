@@ -5,5 +5,12 @@
                                  https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd"
              version="3.1">
     
+    <persistence-unit name="BloodBankPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.example.bloodbank.entity.Donor</class>
+        <class>com.example.bloodbank.entity.Receveur</class>
+        <class>com.example.bloodbank.entity.Utilisateur</class>
+        <class>com.example.bloodbank.entity.AssociationDon</class>
 
+    </persistence-unit>
 </persistence>
