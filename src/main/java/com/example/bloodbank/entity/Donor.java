@@ -3,10 +3,7 @@ package com.example.bloodbank.entity;
 import com.example.bloodbank.entity.enums.GroupeSanguin;
 import com.example.bloodbank.entity.enums.Sexe;
 import com.example.bloodbank.entity.enums.StatutDonneur;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -14,9 +11,13 @@ import java.util.Date;
 @Table(name = "donneur")
 public class Donor extends  Utilisateur
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  Long id;
     private Double poids;
-    private boolean ContreIndicattions;
-    private Date dateDernierDon;
+    private boolean contreindicattions;
+    @Temporal(TemporalType.DATE)
+    private Date datedernierdon;
     @Enumerated(EnumType.STRING)
     private StatutDonneur statut;
 
@@ -25,15 +26,23 @@ public class Donor extends  Utilisateur
         super();
     }
 
-    public Donor(long id, String cin, String nom , String prenom , Date dateNaissance,
-                 String telephone, Sexe sexe, GroupeSanguin groupeSanguin, double poids,
-                 boolean ContreIndicattions, Date dateDernierDon, StatutDonneur statut )
+    public Donor( String cin, String nom , String prenom , Date dateNaissance,
+                 String telephone, Sexe sexe, GroupeSanguin groupesanguin, double poids,
+                 boolean contreindicattions, Date datedernierdon, StatutDonneur statut )
     {
-        super( id, cin, nom , prenom , dateNaissance, telephone, sexe,  groupeSanguin);
+        super(  cin, nom , prenom , dateNaissance, telephone, sexe,  groupesanguin);
+
         this.poids = poids;
-        this.ContreIndicattions = ContreIndicattions;
-        this.dateDernierDon = dateDernierDon;
+        this.contreindicattions = contreindicattions;
+        this.datedernierdon = datedernierdon;
         this.statut = statut ;
+    }
+
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Double getPoids()
@@ -48,22 +57,22 @@ public class Donor extends  Utilisateur
 
     public boolean isContreIndicattions()
     {
-        return ContreIndicattions;
+        return contreindicattions;
     }
 
-    public void setContreIndicattions(boolean ContreIndicattions)
+    public void setContreIndicattions(boolean contreindicattions)
     {
-        this.ContreIndicattions = ContreIndicattions;
+        this.contreindicattions = contreindicattions;
     }
 
     public Date getDateDernierDon()
     {
-        return dateDernierDon;
+        return datedernierdon;
     }
 
     public void setDateDernierDon(Date dateDernierDon)
     {
-        this.dateDernierDon = dateDernierDon;
+        this.datedernierdon = dateDernierDon;
     }
 
     public StatutDonneur getStatut()

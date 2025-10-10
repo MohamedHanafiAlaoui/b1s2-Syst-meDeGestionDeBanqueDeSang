@@ -11,9 +11,12 @@ import java.util.Date;
 @Table(name = "Receveur")
 public class Receveur extends Utilisateur
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  Long id;
     @Enumerated(EnumType.STRING)
-    private UrgenceReceveur ungence;
-    private int nombrePochesRequises;
+    private UrgenceReceveur urgence;
+    private int nombrepochesrequises;
     private int nombrePochesRecues;
 
     @Enumerated(EnumType.STRING)
@@ -24,22 +27,29 @@ public class Receveur extends Utilisateur
         super();
     }
 
-    public Receveur(long id, String cin, String nom , String prenom , Date dateNaissance, String telephone, Sexe sexe, GroupeSanguin groupeSanguin,UrgenceReceveur ungence,int nombrePochesRequises,int nombrePochesRecues,StatutDonneur statut)
+    public Receveur( String cin, String nom , String prenom , Date datenaissance, String telephone, Sexe sexe, GroupeSanguin groupesanguin,UrgenceReceveur urgence,int nombrepochesrequises,int nombrePochesRecues,StatutDonneur statut)
     {
-        super( id, cin, nom , prenom , dateNaissance, telephone, sexe,  groupeSanguin);
-        this.ungence = ungence;
-        this.nombrePochesRequises = nombrePochesRequises;
+        super(  cin, nom , prenom , datenaissance, telephone, sexe,  groupesanguin);
+        this.urgence = urgence;
+        this.nombrepochesrequises = nombrepochesrequises;
         this.nombrePochesRecues = nombrePochesRecues;
         this.statut = statut;
     }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     public  UrgenceReceveur getUrgence()
     {
-        return ungence;
+        return urgence;
     }
     public int getNombrePochesRequises()
     {
-        return nombrePochesRequises;
+        return nombrepochesrequises;
     }
     public int getNombrePochesRecues()
     {
@@ -48,12 +58,12 @@ public class Receveur extends Utilisateur
 
     public void setUngence(UrgenceReceveur  ungence)
     {
-        this.ungence = ungence;
+        this.urgence = ungence;
     }
 
     public void setNombrePochesRequises(int nombrePochesRequises)
     {
-        this.nombrePochesRequises = nombrePochesRequises;
+        this.nombrepochesrequises = nombrePochesRequises;
     }
 
     public void  setNombrePochesRecues(int nombrePochesRecues)

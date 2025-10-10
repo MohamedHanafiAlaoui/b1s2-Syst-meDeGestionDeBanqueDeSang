@@ -1,4 +1,7 @@
 package com.example.bloodbank.entity.enums;
 
-public class StatutReceveur {
+public enum StatutReceveur
+{
+    EN_ATTENTE,
+    SATISFAIT
 }

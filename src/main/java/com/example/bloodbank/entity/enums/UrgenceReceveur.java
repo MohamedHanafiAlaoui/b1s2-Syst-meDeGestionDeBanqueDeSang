@@ -1,4 +1,7 @@
 package com.example.bloodbank.entity.enums;
 
-public class UrgenceReceveur {
+public enum UrgenceReceveur {
+    CRITIQUE,
+    URGENT,
+    NORMAL
 }
