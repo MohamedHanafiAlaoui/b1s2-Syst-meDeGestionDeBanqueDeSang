@@ -11,7 +11,6 @@ public class JPAUtil {
 
     private static EntityManagerFactory emf;
 
-    // هذه الطريقة تسمح لك تختار Test أو Production
     public static EntityManagerFactory getEntityManagerFactory(boolean test) {
         if (emf == null) {
             try {

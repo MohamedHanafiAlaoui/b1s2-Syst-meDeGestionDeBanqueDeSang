@@ -291,7 +291,7 @@
     </div>
 
     <div class="image-content">
-        <img src="img.png" alt="Illustration de don de sang">
+        <img src="8920660.jpg" alt="Illustration de don de sang">
     </div>
 </section>
 

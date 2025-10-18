@@ -1,9 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,8 +15,8 @@
         }
 
         body {
-            font-family: "Poppins", sans-serif;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            font-family: 'Poppins', sans-serif;
+            /*background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -27,102 +25,69 @@
         }
 
         .container {
-            display: flex;
-            max-width: 1200px;
-            width: 100%;
-            background: #fff;
+            background: white;
             border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            min-height: 700px;
-        }
-
-        .image-section {
-            flex: 1;
-            background: linear-gradient(135deg, rgba(220, 53, 69, 0.9), rgba(178, 42, 58, 0.9)),
-            url('https://images.unsplash.com/photo-1579154204601-015dbf4a937f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-            color: white;
-            text-align: center;
-        }
-
-        .image-content h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .image-content p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            line-height: 1.6;
-            max-width: 400px;
-        }
-
-        .form-section {
-            flex: 1;
-            padding: 50px 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .form-container {
             width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
+            max-width: 700px;
         }
 
-        h2 {
-            color: #dc3545;
+        .header {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            padding: 30px;
             text-align: center;
-            margin-bottom: 10px;
-            font-size: 2rem;
+        }
+
+        .header h2 {
+            font-size: 2.2rem;
             font-weight: 600;
+            margin-bottom: 8px;
         }
 
-        .subtitle {
-            text-align: center;
-            color: #6c757d;
-            margin-bottom: 30px;
+        .header p {
+            opacity: 0.9;
             font-size: 1rem;
         }
 
+        .form-content {
+            padding: 40px;
+        }
+
+        .messages {
+            margin-bottom: 25px;
+        }
+
         .message {
-            padding: 12px 16px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-weight: 500;
+            padding: 15px;
+            border-radius: 10px;
             text-align: center;
+            font-weight: 500;
+            margin-bottom: 15px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .erreur {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+            border-left: 4px solid #dc3545;
         }
 
         .success {
-            background-color: #d4edda;
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
             color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+            border-left: 4px solid #28a745;
         }
 
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 20px;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .full-width {
@@ -131,118 +96,124 @@
 
         label {
             display: block;
+            margin-bottom: 8px;
             font-weight: 500;
-            margin-bottom: 6px;
             color: #495057;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         input, select {
             width: 100%;
-            padding: 12px 15px;
-            border: 1.5px solid #e1e5e9;
-            border-radius: 8px;
-            font-size: 0.95rem;
+            padding: 14px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
             transition: all 0.3s ease;
-            background-color: #fff;
+            background: #f8f9fa;
         }
 
         input:focus, select:focus {
             outline: none;
             border-color: #dc3545;
+            background: white;
             box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+            transform: translateY(-2px);
         }
 
         .checkbox-group {
             display: flex;
             align-items: center;
-            margin: 20px 0;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            margin: 25px 0;
         }
 
         .checkbox-group input {
             width: auto;
-            margin-right: 10px;
+            margin-right: 12px;
+            transform: scale(1.2);
         }
 
         .checkbox-group label {
             margin-bottom: 0;
             font-weight: 500;
+            color: #495057;
         }
 
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 14px;
+        .btn-submit {
             background: linear-gradient(135deg, #dc3545, #c82333);
             color: white;
+            padding: 16px 32px;
             border: none;
-            border-radius: 8px;
-            font-size: 1rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            width: 100%;
             box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
         }
 
-        .btn:hover {
+        .btn-submit:hover {
             background: linear-gradient(135deg, #c82333, #bd2130);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
         }
 
-        .btn:active {
+        .btn-submit:active {
             transform: translateY(0);
         }
 
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            color: #6c757d;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .back-link:hover {
-            color: #dc3545;
-        }
-
-        @media (max-width: 992px) {
-            .container {
-                flex-direction: column;
-                max-width: 600px;
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
             }
-
-            .image-section {
-                padding: 30px 20px;
-                min-height: 200px;
-            }
-
-            .image-content h1 {
-                font-size: 2.2rem;
-            }
-
-            .form-section {
-                padding: 30px 25px;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
             .form-grid {
                 grid-template-columns: 1fr;
             }
 
-            .image-content h1 {
+            .form-content {
+                padding: 30px 25px;
+            }
+
+            .header {
+                padding: 25px 20px;
+            }
+
+            .header h2 {
                 font-size: 1.8rem;
             }
+        }
 
-            .image-content p {
-                font-size: 1rem;
-            }
-
+        @media (max-width: 480px) {
             body {
                 padding: 10px;
+            }
+
+            .form-content {
+                padding: 20px 15px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+
+            .header h2 {
+                font-size: 1.5rem;
+            }
+
+            input, select {
+                padding: 12px 14px;
             }
         }
     </style>
@@ -250,111 +221,91 @@
 <body>
 
 <div class="container">
-    <!-- Section Image -->
-    <div class="image-section">
-        <div class="image-content">
-            <h1>Modifier un Donneur</h1>
-            <p>Mettez à jour les informations du donneur pour maintenir notre base de données à jour</p>
-        </div>
+    <div class="header">
+        <h2>Modifier le Donneur</h2>
+        <p>Mettez à jour les informations du donneur</p>
     </div>
 
-    <!-- Section Formulaire -->
-    <div class="form-section">
-        <div class="form-container">
-            <h2>Modifier le Donneur</h2>
-            <p class="subtitle">Veuillez modifier les informations nécessaires</p>
-
-            <!-- Messages -->
+    <div class="form-content">
+        <div class="messages">
             <c:if test="${not empty erreur}">
-                <div class="message error">${erreur}</div>
-            </c:if>
-            <c:if test="${not empty message}">
-                <div class="message success">${message}</div>
+                <div class="message erreur">${erreur}</div>
             </c:if>
 
-            <form action="<c:url value='/donneur/modifier'/>" method="post">
-                <input type="hidden" name="id" value="${donneur.id}" />
+            <c:if test="${not empty sessionScope.message}">
+                <div class="message success">${sessionScope.message}</div>
+                <c:remove var="message" scope="session"/>
+            </c:if>
+        </div>
 
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="cin">CIN</label>
-                        <input type="text" id="cin" name="cin" value="${donneur.cin}" required />
-                    </div>
+        <form action="${pageContext.request.contextPath}/donneur/modifierDono" method="post">
+            <input type="hidden" name="id" value="${donneur.id}" />
 
-                    <div class="form-group">
-                        <label for="telephone">Téléphone</label>
-                        <input type="text" id="telephone" name="telephone" value="${donneur.telephone}" required />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nom">Nom</label>
-                        <input type="text" id="nom" name="nom" value="${donneur.nom}" required />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="prenom">Prénom</label>
-                        <input type="text" id="prenom" name="prenom" value="${donneur.prenom}" required />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="dateNaissance">Date de Naissance</label>
-                        <input type="date" id="dateNaissance" name="dateNaissance"
-                               value="<fmt:formatDate value='${donneur.dateNaissance}' pattern='yyyy-MM-dd'/>" required />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="dateDernierDon">Date du Dernier Don</label>
-                        <input type="date" id="dateDernierDon" name="dateDernierDon"
-                               value="<fmt:formatDate value='${donneur.dateDernierDon}' pattern='yyyy-MM-dd'/>" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="sexe">Sexe</label>
-                        <select id="sexe" name="sexe" required>
-                            <option value="">-- Choisir --</option>
-                            <option value="HOMME" ${donneur.sexe == 'HOMME' ? 'selected' : ''}>Homme</option>
-                            <option value="FEMME" ${donneur.sexe == 'FEMME' ? 'selected' : ''}>Femme</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="groupeSanguin">Groupe Sanguin</label>
-                        <select id="groupeSanguin" name="groupeSanguin" required>
-                            <option value="">-- Sélectionner --</option>
-                            <c:forEach var="groupe" items="${['O_NEGATIF','O_POSITIF','A_NEGATIF','A_POSITIF','B_NEGATIF','B_POSITIF','AB_NEGATIF','AB_POSITIF']}">
-                                <option value="${groupe}" ${donneur.groupeSanguin == groupe ? 'selected' : ''}>
-                                    <c:choose>
-                                        <c:when test="${groupe == 'O_NEGATIF'}">O-</c:when>
-                                        <c:when test="${groupe == 'O_POSITIF'}">O+</c:when>
-                                        <c:when test="${groupe == 'A_NEGATIF'}">A-</c:when>
-                                        <c:when test="${groupe == 'A_POSITIF'}">A+</c:when>
-                                        <c:when test="${groupe == 'B_NEGATIF'}">B-</c:when>
-                                        <c:when test="${groupe == 'B_POSITIF'}">B+</c:when>
-                                        <c:when test="${groupe == 'AB_NEGATIF'}">AB-</c:when>
-                                        <c:when test="${groupe == 'AB_POSITIF'}">AB+</c:when>
-                                        <c:otherwise>${groupe}</c:otherwise>
-                                    </c:choose>
-                                </option>
-                            </c:forEach>
-                        </select>
-                    </div>
-
-                    <div class="form-group full-width">
-                        <label for="poids">Poids (kg)</label>
-                        <input type="number" step="0.1" id="poids" name="poids" value="${donneur.poids}" required />
-                    </div>
-
-                    <div class="checkbox-group full-width">
-                        <input type="checkbox" id="contreindicattions" name="contreindicattions"
-                        ${donneur.contreIndicattions ? 'checked' : ''} />
-                        <label for="contreindicattions">Contre-indications</label>
-                    </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="cin">CIN :</label>
+                    <input type="text" id="cin" name="cin" value="${donneur.cin}" required />
                 </div>
 
-                <button type="submit" class="btn">Enregistrer les modifications</button>
-<%--                <a href="<c:url value='/donneur/liste'/>" class="back-link">← Retour à la liste des donneurs</a>--%>
-            </form>
-        </div>
+                <div class="form-group">
+                    <label for="telephone">Téléphone :</label>
+                    <input type="text" id="telephone" name="telephone" value="${donneur.telephone}" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom" name="nom" value="${donneur.nom}" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="prenom">Prénom :</label>
+                    <input type="text" id="prenom" name="prenom" value="${donneur.prenom}" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="dateNaissance">Date de naissance :</label>
+                    <input type="date" id="dateNaissance" name="dateNaissance" value="${dateNaissanceStr}" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="poids">Poids (kg) :</label>
+                    <input type="number" id="poids" name="poids" min="50" value="${donneur.poids}" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="sexe">Sexe :</label>
+                    <select id="sexe" name="sexe" required>
+                        <option value="">-- Sélectionner --</option>
+                        <c:forEach var="s" items="${listeSexes}">
+                            <option value="${s}" <c:if test="${s.name() == sexeStr}">selected</c:if>>${s}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="groupeSanguin">Groupe sanguin :</label>
+                    <select id="groupeSanguin" name="groupeSanguin" required>
+                        <option value="">-- Sélectionner --</option>
+                        <c:forEach var="g" items="${listeGroupes}">
+                            <option value="${g}" <c:if test="${g.name() == groupeSanguinStr}">selected</c:if>>${g}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="dateDernierDon">Date du dernier don :</label>
+                    <input type="date" id="dateDernierDon" name="dateDernierDon" value="${dateDernierDonStr}" />
+                </div>
+
+                <div class="checkbox-group full-width">
+                    <input type="checkbox" id="contreindicattions" name="contreindicattions"
+                           <c:if test="${donneur.contreIndicattions}">checked</c:if> />
+                    <label for="contreindicattions">Contre-indications médicales</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Enregistrer les modifications</button>
+        </form>
     </div>
 </div>
 
