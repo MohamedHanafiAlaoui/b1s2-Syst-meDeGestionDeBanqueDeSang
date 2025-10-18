@@ -448,13 +448,11 @@
 </head>
 <body>
 <header>
-    <div class="logo">Sang<span>Donneurs</span></div>
+    <div class="logo">Banque<span>Sang</span></div>
     <nav>
         <ul id="nav-menu">
-            <li><a href="#" class="active">Accueil</a></li>
-            <li><a href="#">Donneurs</a></li>
-            <li><a href="#">Receveurs</a></li>
-            <li><a href="#">Statistiques</a></li>
+            <li><a href="${pageContext.request.contextPath}/receveur/liste_donneurs">Donneurs</a></li>
+            <li><a href="${pageContext.request.contextPath}/donneur/liste_receveurs">Receveurs</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
         <div class="burger-menu" id="burger-menu">

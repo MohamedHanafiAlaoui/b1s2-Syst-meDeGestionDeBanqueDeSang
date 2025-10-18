@@ -16,91 +16,191 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f9ff;
-            color: #333;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            color: #0a2239;
             line-height: 1.6;
         }
 
-        /* HEADER SIMPLIFIÉ */
+        /* HEADER AMÉLIORÉ */
         header {
-            background: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 8%;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0a2239;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
             color: #c62828;
+            margin-left: 5px;
+        }
+
+        .logo::before {
+            margin-right: 8px;
+            font-size: 1.5rem;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 30px;
         }
 
-        nav a {
+        nav ul li a {
             text-decoration: none;
-            color: #333;
+            color: #0a2239;
             font-weight: 500;
+            transition: 0.3s;
+            padding: 8px 0;
+            position: relative;
         }
 
-        nav a.active {
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #c62828;
+            transition: width 0.3s;
+        }
+
+        nav ul li a.active::after,
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a.active,
+        nav ul li a:hover {
             color: #c62828;
+        }
+
+        /* BURGER MENU POUR MOBILE */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 5px;
+        }
+
+        .burger-menu span {
+            width: 25px;
+            height: 3px;
+            background-color: #0a2239;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .burger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
         }
 
         /* CONTENU PRINCIPAL */
         .main-content {
-            padding: 2rem;
-            max-width: 1200px;
+            padding: 2rem 8%;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .page-title {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .page-title h1 {
             color: #c62828;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .page-title h1 span {
+            position: relative;
+        }
+
+        .page-title h1 span::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 8px;
+            bottom: 5px;
+            left: 0;
+            background-color: rgba(198, 40, 40, 0.2);
+            z-index: -1;
+            border-radius: 4px;
+        }
+
+        .page-title p {
+            font-size: 1.2rem;
+            color: #4a5568;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* BOUTON AJOUTER */
         .add-section {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .add-btn {
-            background: #28a745;
+            background: linear-gradient(135deg, #c62828, #b71c1c);
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-size: 1rem;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(198, 40, 40, 0.3);
+            text-decoration: none;
+            display: inline-block;
         }
 
         .add-btn:hover {
-            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(198, 40, 40, 0.4);
+            background: linear-gradient(135deg, #b71c1c, #a01212);
         }
 
         /* FILTRES */
         .filter-section {
             background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
             text-align: center;
         }
 
@@ -108,45 +208,70 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
         }
 
-        select, .filter-btn {
-            padding: 8px 16px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+        select {
+            padding: 12px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
             font-size: 1rem;
+            background: white;
+            transition: border-color 0.3s;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #c62828;
         }
 
         .filter-btn {
-            background: #c62828;
+            background: linear-gradient(135deg, #0a2239, #1a3c57);
             color: white;
             border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        /* CARTES */
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(10, 34, 57, 0.3);
+        }
+
+        /* CARTES - RÉDUITES */
         .card-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 1.5rem;
         }
 
         .card {
             background: white;
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 1.5rem;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            border-top: 4px solid #c62828;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 3px solid #c62828;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
         .blood-group-display {
-            width: 100px;
-            height: 120px;
-            background: white;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #fff5f5, #ffeaea);
             border: 2px solid #c62828;
-            border-radius: 8px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -154,7 +279,7 @@
         }
 
         .blood-group-text {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: #c62828;
         }
@@ -162,135 +287,266 @@
         .card h3 {
             text-align: center;
             margin-bottom: 1rem;
-            color: #333;
+            color: #0a2239;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .card-info {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.6rem;
             margin-bottom: 1rem;
         }
 
         .info-item {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            padding: 0.3rem 0;
+            font-size: 0.9rem;
         }
 
         .info-item strong {
-            color: #555;
+            color: #4a5568;
+            font-weight: 600;
         }
 
         /* BARRE DE PROGRESSION */
         .progress-container {
             margin: 1rem 0;
+            background: #f8fafc;
+            padding: 0.8rem;
+            border-radius: 8px;
         }
 
         .progress-label {
             display: flex;
             justify-content: space-between;
             margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #0a2239;
+            font-size: 0.85rem;
         }
 
         .progress-bar {
             width: 100%;
             height: 6px;
-            background: #f0f0f0;
+            background: #e2e8f0;
             border-radius: 3px;
             overflow: hidden;
         }
 
         .progress-fill {
             height: 100%;
-            background: #c62828;
+            background: linear-gradient(90deg, #c62828, #e53e3e);
             border-radius: 3px;
+            transition: width 0.5s ease;
         }
 
         /* BOUTONS D'ACTION */
         .actions {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.8rem;
             margin-top: 1rem;
             padding-top: 1rem;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #f1f5f9;
         }
 
         .action-btn {
             flex: 1;
             padding: 8px 12px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
             text-align: center;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-edit {
-            background: #007bff;
+            background: linear-gradient(135deg, #0a2239, #1a3c57);
             color: white;
         }
 
+        .btn-edit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(10, 34, 57, 0.3);
+        }
+
         .btn-delete {
-            background: #dc3545;
+            background: linear-gradient(135deg, #dc3545, #c53030);
             color: white;
+        }
+
+        .btn-delete:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
         }
 
         /* MESSAGE AUCUNE DONNÉE */
         .no-data {
             text-align: center;
-            padding: 3rem;
-            color: #666;
+            padding: 3rem 2rem;
+            color: #718096;
             font-style: italic;
             background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            grid-column: 1 / -1;
+        }
+
+        .no-data::before {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* MESSAGE DE SUCCÈS */
+        .message {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+            padding: 1rem 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
         }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .main-content {
-                padding: 1rem;
+            header {
+                padding: 15px 5%;
             }
 
-            header {
-                flex-direction: column;
-                gap: 1rem;
+            .main-content {
+                padding: 1rem 5%;
             }
 
             nav ul {
-                gap: 1rem;
+                gap: 1.5rem;
+            }
+
+            .page-title h1 {
+                font-size: 2.2rem;
             }
 
             .filter-form {
                 flex-direction: column;
+                width: 100%;
+            }
+
+            select, .filter-btn {
+                width: 100%;
+                max-width: 300px;
             }
 
             .card-container {
                 grid-template-columns: 1fr;
             }
 
+            .card {
+                padding: 1.2rem;
+            }
+
             .actions {
                 flex-direction: column;
+            }
+
+            .burger-menu {
+                display: flex;
+            }
+
+            nav ul {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                width: 200px;
+                padding: 15px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                border-radius: 8px;
+                display: none;
+                gap: 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 8px 0;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 8px 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            nav ul li:last-child a {
+                border-bottom: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+
+            .blood-group-display {
+                width: 70px;
+                height: 70px;
+            }
+
+            .blood-group-text {
+                font-size: 1.3rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            nav ul {
+                width: 180px;
+            }
+
+            .add-btn {
+                padding: 12px 24px;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
 <header>
-    <div class="logo">SangReceveurs</div>
+    <div class="logo">Banque<span>Sang</span></div>
     <nav>
-        <ul>
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">Donneurs</a></li>
-            <li><a href="#" class="active">Receveurs</a></li>
-            <li><a href="#">Statistiques</a></li>
+        <ul id="nav-menu">
+            <li><a href="${pageContext.request.contextPath}/receveur/liste_donneurs">Donneurs</a></li>
+            <li><a href="${pageContext.request.contextPath}/donneur/liste_receveurs" class="active">Receveurs</a></li>
+            <li><a href="#">Contactez-nous</a></li>
         </ul>
+        <div class="burger-menu" id="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 </header>
 
 <div class="main-content">
     <div class="page-title">
-        <h1>Liste des Receveurs</h1>
+        <h1>Liste des <span>Receveurs</span></h1>
         <p>Gérez et suivez tous les receveurs en attente de transfusion</p>
     </div>
 
@@ -304,7 +560,6 @@
             <button class="add-btn" type="submit">Ajouter un Receveur</button>
         </div>
     </form>
-
 
     <!-- Filtres -->
     <div class="filter-section">
@@ -383,12 +638,10 @@
 
                         <div class="actions">
                             <a class="action-btn btn-edit" href="${pageContext.request.contextPath}/receveur/modifierReceveur?id=${receveur.id}">Modifier</a>
-                            <form action="${pageContext.request.contextPath}/donneur/supprimerReceveur" method="post">
+                            <form action="${pageContext.request.contextPath}/donneur/supprimerReceveur" method="post" style="flex: 1;">
                                 <input type="hidden" name="userId" value="${receveur.id}">
-
                                 <button type="submit" class="action-btn btn-delete">Supprimer</button>
                             </form>
-
                         </div>
                     </div>
                 </c:forEach>
@@ -403,7 +656,35 @@
 </div>
 
 <script>
+    // Menu burger
+    const burgerMenu = document.getElementById('burger-menu');
+    const navMenu = document.getElementById('nav-menu');
 
+    burgerMenu.addEventListener('click', () => {
+        burgerMenu.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Fermer le menu quand on clique sur un lien
+    const navLinks = document.querySelectorAll('#nav-menu a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            burgerMenu.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // Animation des barres de progression
+    document.addEventListener('DOMContentLoaded', function() {
+        const progressBars = document.querySelectorAll('.progress-fill');
+        progressBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 100);
+        });
+    });
 </script>
 </body>
 </html>

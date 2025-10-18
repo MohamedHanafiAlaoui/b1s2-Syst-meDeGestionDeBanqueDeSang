@@ -33,8 +33,7 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
 
         String cin = request.getParameter("cin");
-        String userType = request.getParameter("usertype"); // "donneur" أو "receveur"
-
+        String userType = request.getParameter("usertype");
         if (cin == null || cin.trim().isEmpty() || userType == null || userType.trim().isEmpty()) {
             request.setAttribute("error", "CIN et type d'utilisateur obligatoires !");
             request.getRequestDispatcher("/login.jsp").forward(request, response);
@@ -49,7 +48,7 @@ public class LoginController extends HttpServlet {
                 if (donor != null) {
                     session.setAttribute("userId", donor.getId());
                     session.setAttribute("usertype", "donneur");
-                    response.sendRedirect(request.getContextPath() + "/donneur/dashboard"); // page donneur
+                    response.sendRedirect(request.getContextPath());
                     return;
                 }
             } else if ("receveur".equalsIgnoreCase(userType)) {
@@ -57,7 +56,7 @@ public class LoginController extends HttpServlet {
                 if (receveur != null) {
                     session.setAttribute("userId", receveur.getId());
                     session.setAttribute("usertype", "receveur");
-                    response.sendRedirect(request.getContextPath() + "/receveur/dashboard"); // page receveur
+                    response.sendRedirect(request.getContextPath() );
                     return;
                 }
             }
