@@ -5,12 +5,119 @@
          version="4.0">
 
     <servlet>
-        <servlet-name>HelloServlet</servlet-name>
-        <servlet-class>example.HelloServlet</servlet-class>
+        <servlet-name>DonneurController</servlet-name>
+        <servlet-class>com.example.bloodbank.controller.DonneurController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>HelloServlet</servlet-name>
-        <url-pattern>/hello</url-pattern>
+        <servlet-name>DonneurController</servlet-name>
+        <url-pattern>/donneur/ajouterDonneur</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ReceveurController</servlet-name>
+        <servlet-class>com.example.bloodbank.controller.ReceveurController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ReceveurController</servlet-name>
+        <url-pattern>/receveur/ajouterReceveur</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>com.example.bloodbank.controller.LoginController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ListeDonneursController</servlet-name>
+        <servlet-class>com.example.bloodbank.controller.ListeDonneursController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListeDonneursController</servlet-name>
+        <url-pattern>/receveur/liste_donneurs</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ListeReceveursController</servlet-name>
+        <servlet-class>com.example.bloodbank.controller.ListeReceveursController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListeReceveursController</servlet-name>
+        <url-pattern>/donneur/liste_receveurs</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>AjouterAssocDonController</servlet-name>
+        <servlet-class>com.example.bloodbank.controller.AjouterAssocDonController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AjouterAssocDonController</servlet-name>
+        <url-pattern>/donneur/ajouterAssocDon</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SupprimerDonorController</servlet-name>
+        <servlet-class>com.example.bloodbank.controller.SupprimerDonorController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SupprimerDonorController</servlet-name>
+        <url-pattern>/receveur/supprimerDonor</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>SupprimerReceveurController</servlet-name>
+        <servlet-class>com.example.bloodbank.controller.SupprimerReceveurController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SupprimerReceveurController</servlet-name>
+        <url-pattern>/donneur/supprimerReceveur</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ModifierAssocDonIdRecveur</servlet-name>
+        <servlet-class>com.example.bloodbank.controller.ModifierAssocDonIdRecveur</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ModifierAssocDonIdRecveur</servlet-name>
+        <url-pattern>/donneur/modifierAssocDonIdRecveur</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ModifierDonor</servlet-name>
+        <servlet-class>com.example.bloodbank.controller.ModifierDonor</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ModifierDonor</servlet-name>
+        <url-pattern>/donneur/modifierDono</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ModifierReceveur</servlet-name>
+        <servlet-class>com.example.bloodbank.controller.ModifierReceveur</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ModifierReceveur</servlet-name>
+        <url-pattern>/receveur/modifierReceveur</url-pattern>
+    </servlet-mapping>
+
 </web-app>

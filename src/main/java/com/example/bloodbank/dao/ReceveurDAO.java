@@ -1,10 +1,12 @@
 package com.example.bloodbank.dao;
 
 
+import com.example.bloodbank.entity.Donor;
 import com.example.bloodbank.entity.Receveur;
 import com.example.bloodbank.util.JPAUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
 
 import java.util.List;
 
@@ -75,6 +77,22 @@ public class ReceveurDAO
             e.printStackTrace();
         }
         finally {
+            em.close();
+        }
+    }
+
+    public Receveur getReceveurByCin(String cin) {
+        EntityManager em = JPAUtil.getEntityManagerFactory(false).createEntityManager();
+        try {
+            return em.createQuery("SELECT r FROM Receveur r WHERE r.cin = :cin", Receveur.class)
+                    .setParameter("cin", cin)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
             em.close();
         }
     }

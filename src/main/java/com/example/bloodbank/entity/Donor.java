@@ -6,6 +6,7 @@ import com.example.bloodbank.entity.enums.StatutDonneur;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "donneur")
@@ -20,6 +21,9 @@ public class Donor extends  Utilisateur
     private Date datedernierdon;
     @Enumerated(EnumType.STRING)
     private StatutDonneur statut;
+    @OneToMany(mappedBy = "donor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<AssociationDon> associationDonList;
+
 
     public  Donor()
     {
@@ -83,6 +87,15 @@ public class Donor extends  Utilisateur
     public void setstatut(StatutDonneur statut)
     {
         this.statut = statut;
+    }
+
+
+    public List<AssociationDon> getAssociationDonList() {
+        return associationDonList;
+    }
+
+    public void setAssociationDonList(List<AssociationDon> associationDonList) {
+        this.associationDonList = associationDonList;
     }
 
 }

@@ -1,9 +1,6 @@
 package com.example.bloodbank.entity;
 
-import com.example.bloodbank.entity.enums.GroupeSanguin;
-import com.example.bloodbank.entity.enums.Sexe;
-import com.example.bloodbank.entity.enums.StatutDonneur;
-import com.example.bloodbank.entity.enums.UrgenceReceveur;
+import com.example.bloodbank.entity.enums.*;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -16,18 +13,19 @@ public class Receveur extends Utilisateur
     private  Long id;
     @Enumerated(EnumType.STRING)
     private UrgenceReceveur urgence;
+
+    @Enumerated(EnumType.STRING)
+    private StatutReceveur statut;
     private int nombrepochesrequises;
     private int nombrePochesRecues;
 
-    @Enumerated(EnumType.STRING)
-    private StatutDonneur statut;
 
     public Receveur()
     {
         super();
     }
 
-    public Receveur( String cin, String nom , String prenom , Date datenaissance, String telephone, Sexe sexe, GroupeSanguin groupesanguin,UrgenceReceveur urgence,int nombrepochesrequises,int nombrePochesRecues,StatutDonneur statut)
+    public Receveur(String cin, String nom , String prenom , Date datenaissance, String telephone, Sexe sexe, GroupeSanguin groupesanguin, UrgenceReceveur urgence, int nombrepochesrequises, int nombrePochesRecues, StatutReceveur  statut)
     {
         super(  cin, nom , prenom , datenaissance, telephone, sexe,  groupesanguin);
         this.urgence = urgence;
@@ -70,4 +68,13 @@ public class Receveur extends Utilisateur
     {
         this.nombrePochesRecues = nombrePochesRecues;
     }
+
+    public StatutReceveur getStatut()
+        {
+        return statut;
+        }
+        public void setStatut(StatutReceveur  statut)
+            {
+            this.statut = statut;
+            }
 }

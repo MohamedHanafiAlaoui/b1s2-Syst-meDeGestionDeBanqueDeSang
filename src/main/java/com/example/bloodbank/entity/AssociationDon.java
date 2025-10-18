@@ -11,22 +11,39 @@ public class AssociationDon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+
     @Temporal(TemporalType.DATE)
     private Date dateAssociation;
+
     @Column(name = "donEffecture")
     private boolean donEffecture;
+
     @Temporal(TemporalType.DATE)
     private Date dateDonEffecture;
+
     @ManyToOne
     @JoinColumn(name = "donneur_id", nullable = false)
     private Donor donor;
+
     @ManyToOne
-    @JoinColumn(name = "receveur_id", nullable = false)
+    @JoinColumn(name = "receveur_id", nullable = true)
     private Receveur receveur;
 
     public  AssociationDon()
     {
     }
+
+    public  AssociationDon(Date dateAssociation,boolean donEffecture, Date dateDonEffecture, Donor donor, Receveur receveur)
+    {
+        this.dateAssociation = dateAssociation;
+        this.donor = donor;
+        this.receveur = receveur;
+        this.donEffecture = donEffecture;
+        this.dateDonEffecture = dateDonEffecture;
+
+    }
+
 
 
     public long getId() {
